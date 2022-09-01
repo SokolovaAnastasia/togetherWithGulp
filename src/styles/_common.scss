@@ -1,0 +1,108 @@
+@import '_variables.scss';
+
+@mixin posAbsolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@mixin hechteg {
+  position: absolute;
+  background-color: $colorBlack;
+  color: #FFFFFF;
+  padding: 6px 14px;
+  top: 7px;
+  right: 7px;
+  font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+}
+
+@mixin topLayer {
+  color: $colorWite;
+  position: absolute;
+  left: 29px;
+  top: 22px; 
+  bottom: 25px;
+  max-width: 292px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-height: 84%;
+}
+@mixin btnClose {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border-radius: 20px;
+  background-image: url("../images/btn_close.png");
+}
+@mixin todo {
+  font-size: 12px;
+  line-height: 22px;
+  position: relative;
+  padding-left: 17px;
+  &:before {
+  content: '';
+  top: 3px;
+  left: 0;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-image: url("../images/todo.png"); 
+  }
+   
+}
+
+
+
+* {
+  box-sizing: border-box;
+
+}
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  // max-width: $divMaxWidth;
+  margin: 0 auto;
+}
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.btnreset {
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+.listreset {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+

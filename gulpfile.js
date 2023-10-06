@@ -14,7 +14,16 @@ const font = require('gulp-font')
 const browserSync = require('browser-sync').create()
 const gulpPug = require('gulp-pug')
 const gulpSass = require('gulp-sass')(require('sass'));
+//
 
+var gulp = require('gulp');
+var ghPages = require('gulp-gh-pages');
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
+
+//
 const clean = () => {
   return del(['dist'])
 }
@@ -33,7 +42,6 @@ const styles = () => {
   .pipe(dest('dist'))
   .pipe(browserSync.stream())
 }
-
 const stylesbuild = () => {
   return src('src/styles/**/*.css')
   .pipe(concat('main.css'))
@@ -46,8 +54,6 @@ const stylesbuild = () => {
   .pipe(dest('dist'))
   .pipe(browserSync.stream())
 }
-
-
 const htmlMinify = () => {
   return src('src/**/*.html')
   .pipe(htmlMin ({
@@ -56,7 +62,6 @@ const htmlMinify = () => {
 .pipe(dest('dist'))
 .pipe(browserSync.stream())
 }
-
 const svgSprites = () => {
   return src('src/images/svg/**/*.svg')
   .pipe(svgSprite({
@@ -69,7 +74,6 @@ const svgSprites = () => {
 
   .pipe(dest('dist/images'))
 }
-
 const scripts = () => {
   return src([
     'src/js/components/**/*.js',
@@ -87,7 +91,6 @@ const scripts = () => {
   .pipe(dest('dist'))
   .pipe(browserSync.stream())
 }
-
 const scriptsbuild = () => {
   return src([
     'src/js/components/**/*.js',
@@ -103,7 +106,6 @@ const scriptsbuild = () => {
   .pipe(dest('dist'))
   .pipe(browserSync.stream())
 }
-
 const resources = () => {
   return src('src/resources/**')
   .pipe(dest('dist'))
@@ -115,7 +117,6 @@ const watchFiles = () => {
     }
   })
 }
-
 const images = () => {
   return src([
     'src/images/**/*.jpg',
@@ -134,7 +135,7 @@ const fonts = () => {
   ])
   .pipe(dest('dist/fonts'))
 }
-// 
+//
 const pug2html = () => {
  return src(
   'src/pug/pages/*.pug')
@@ -146,9 +147,7 @@ const sass2css = () => {
   .pipe(gulpSass())
   .pipe(dest('dist/styles'))
  }
-// 
-
-
+//
 watch('src/styles/**/*.scss', sass2css)
 watch('src/pug/pages**/*.pug', pug2html)
 watch('src/**/*.html', htmlMinify)
